@@ -1,0 +1,27 @@
+<html>
+	<head></head>
+	<body>
+		<div class="displayresult"></div>
+		
+		<script>
+		fetch('https://rpc.paw.digital/', {
+		  method: 'post',
+		  body: JSON.stringify({'action': 'account_info', 'account': 'paw_3ez3ifbppo6swcjhfmsojmu9euoh6mj57kcpq5spmed8guc5a817m95txcx8', 'representative': 'true', 'weight': 'true', 'receivable': 'true'}),
+		  mode: 'cors',
+		  headers: new Headers({
+			'Content-Type': 'application/json'
+		  })
+		})
+		.then(response => response.json())
+		.then(data => {
+			//console.log(data);
+			container = document.querySelector('.displayresult');
+			htmlSegment = '<pre>' +
+				JSON.stringify(data, null, 4)
+				+ '</pre>';
+			container.innerHTML = htmlSegment;
+		})
+		</script>
+		
+	</body>
+</html>		
